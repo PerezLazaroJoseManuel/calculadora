@@ -16,9 +16,21 @@ package calculadora;
  *		se debe reorganizar este código usando al menos tres de las reglas 
  *		vistas en clase.
  */
+/**
+ * 
+ * @author jmpel
+ *
+ *      	En esta primera refactorización lo que hacemos es reorganizar el código 
+ *      poniendo los atributos primero y después los metodos.
+ *      
+ *      	Luego comprobamos con JUnit que no hay ninguna variación en el resultado.
+ *       
+ */
 
 
 class NodoPila {
+	public NodoPila abajo;
+	public double dato;	
 
 	public NodoPila(double dato, NodoPila abajo) {
 		this.dato = dato;
@@ -26,11 +38,12 @@ class NodoPila {
 	}
 	
 	
-	public NodoPila abajo;
-	public double dato;	
 }
 
 public class RPN {
+	private String commando;
+	private NodoPila arriba;
+	
 	public void pushPila(double nuevo_dato) {
 		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
 		arriba = nuevo_nodo;
@@ -50,6 +63,7 @@ public class RPN {
 	public double resultado() {
 		double a, b;
 		int j;
+		double val 	= popPila();
 		
 		for(int i = 0; i < commando.length(); i++) {
 			//si es un dijito
@@ -93,15 +107,12 @@ public class RPN {
 				throw new IllegalArgumentException();
 			}
 		}
-		
-		double val = popPila();
-		
+				
 		if(arriba != null) {
 			throw new IllegalArgumentException();
 		}
 		
 		return val;
 	}
-	private String commando;
-	private NodoPila arriba;
+	
 }
