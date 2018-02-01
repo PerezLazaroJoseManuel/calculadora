@@ -27,17 +27,14 @@ package calculadora;
  *       
  */
 
-
 class NodoPila {
 	public NodoPila abajo;
-	public double dato;	
-
+	public double dato;
+	
 	public NodoPila(double dato, NodoPila abajo) {
 		this.dato = dato;
 		this.abajo = abajo;
 	}
-	
-	
 }
 
 public class RPN {
@@ -63,8 +60,7 @@ public class RPN {
 	public double resultado() {
 		double a, b;
 		int j;
-		double val 	= popPila();
-		
+			
 		for(int i = 0; i < commando.length(); i++) {
 			//si es un dijito
 			if(Character.isDigit(commando.charAt(i))) {
@@ -107,7 +103,9 @@ public class RPN {
 				throw new IllegalArgumentException();
 			}
 		}
-				
+		
+		double val 	= popPila();
+		
 		if(arriba != null) {
 			throw new IllegalArgumentException();
 		}
