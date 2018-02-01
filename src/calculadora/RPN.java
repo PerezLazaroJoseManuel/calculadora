@@ -29,18 +29,16 @@ package calculadora;
  *      simplificarlo y definir mejor las operaciones.
  *      
  *      	Lo vuelvo a comprobar con JUnit para verificar que no varian los resultados.
+ *       	
+ *       	En la tercera refactorización he creado la clase NodoPila fuera de la clase
+ *       RPN, así se queda más limpio el código.
+ *       
+ *       	Lo he vuelto a probar con JUnit para verificar que sigue funcionando del mismo 
+ *       modo el programa.
  *       
  */
 
-class NodoPila {
-	public NodoPila abajo;
-	public double dato;
-	
-	public NodoPila(double dato, NodoPila abajo) {
-		this.dato = dato;
-		this.abajo = abajo;
-	}
-}
+import calculadora.NodoPila;
 
 public class RPN {
 	private String commando;
