@@ -24,20 +24,22 @@ package calculadora;
  *      poniendo los atributos primero y después los metodos.
  *      
  *      	Luego comprobamos con JUnit que no hay ninguna variación en el resultado.
+ *      
+ *      	En la segunda refactorización he extraido metodos del metodo resultado para 
+ *      simplificarlo y definir mejor las operaciones.
+ *      
+ *      	Lo vuelvo a comprobar con JUnit para verificar que no varian los resultados.
  *       
  */
 
-
 class NodoPila {
 	public NodoPila abajo;
-	public double dato;	
-
+	public double dato;
+	
 	public NodoPila(double dato, NodoPila abajo) {
 		this.dato = dato;
 		this.abajo = abajo;
 	}
-	
-	
 }
 
 public class RPN {
@@ -61,10 +63,8 @@ public class RPN {
 	}
 	
 	public double resultado() {
-		double a, b;
 		int j;
-		double val 	= popPila();
-		
+			
 		for(int i = 0; i < commando.length(); i++) {
 			//si es un dijito
 			if(Character.isDigit(commando.charAt(i))) {
@@ -80,39 +80,77 @@ public class RPN {
 				numero = Double.parseDouble(temp);
 				pushPila(numero);
 			} else if(commando.charAt(i) == '+') {
-				b = popPila();
-				a = popPila();
-				pushPila(a + b);
+				sum();
 			} else if(commando.charAt(i) == '-') {
-				b = popPila();
-				a = popPila();
-				pushPila(a - b);
+				rest();
 			} else if(commando.charAt(i) == '*') {
-				b = popPila();
-				a = popPila();
-				pushPila(a * b);
+				mult();
 			} else if(commando.charAt(i) == '/') {
-				b = popPila();
-				a = popPila();
-				pushPila(a / b);
+				div();
 			} else if(commando.charAt(i) == '^') {
-				b = popPila();
-				a = popPila();
-				pushPila(Math.pow(a, b));
+				pow();
 			} else if(commando.charAt(i) == '%') {
-				b = popPila();
-				a = popPila();
-				pushPila(a % b);
+				modul();
 			} else if(commando.charAt(i) != ' ') {
 				throw new IllegalArgumentException();
 			}
 		}
-				
+		
+		double val 	= popPila();
+		
 		if(arriba != null) {
 			throw new IllegalArgumentException();
 		}
 		
 		return val;
+	}
+
+	private void modul() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a % b);
+	}
+
+	private void pow() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(Math.pow(a, b));
+	}
+
+	private void div() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a / b);
+	}
+
+	private void mult() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a * b);
+	}
+
+	private void rest() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a - b);
+	}
+
+	private void sum() {
+		double a;
+		double b;
+		b = popPila();
+		a = popPila();
+		pushPila(a + b);
 	}
 	
 }
