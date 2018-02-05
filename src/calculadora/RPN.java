@@ -16,9 +16,8 @@ package calculadora;
  *		se debe reorganizar este código usando al menos tres de las reglas 
  *		vistas en clase.
  */
-/**
+/*
  * 
- * @author jmpel
  *
  *      	En esta primera refactorización lo que hacemos es reorganizar el código 
  *      poniendo los atributos primero y después los metodos.
@@ -45,23 +44,13 @@ class NodoPila {
 public class RPN {
 	private String commando;
 	private NodoPila arriba;
-	
-	public void pushPila(double nuevo_dato) {
-		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
-		arriba = nuevo_nodo;
-	}
-	
-	public double popPila() {
-		double dato_arriba = arriba.dato;
-		arriba = arriba.abajo;
-		return dato_arriba;
-	}
+	private double a;
+	private double b;
 	
 	public RPN(String commando) {
 		arriba = null;
 		this.commando = commando;
 	}
-	
 	public double resultado() {
 		int j;
 			
@@ -104,53 +93,44 @@ public class RPN {
 		
 		return val;
 	}
-
-	private void modul() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a % b);
-	}
-
-	private void pow() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(Math.pow(a, b));
-	}
-
-	private void div() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a / b);
-	}
-
-	private void mult() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a * b);
-	}
-
-	private void rest() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a - b);
-	}
-
 	private void sum() {
-		double a;
-		double b;
 		b = popPila();
 		a = popPila();
 		pushPila(a + b);
 	}
+	private void rest() {
+		b = popPila();
+		a = popPila();
+		pushPila(a - b);
+	}
+	private void mult() {
+		b = popPila();
+		a = popPila();
+		pushPila(a * b);
+	}
+	private void div() {
+		b = popPila();
+		a = popPila();
+		pushPila(a / b);
+	}
+	private void pow() {
+		b = popPila();
+		a = popPila();
+		pushPila(Math.pow(a, b));
+	}
+	private void modul() {
+		b = popPila();
+		a = popPila();
+		pushPila(a % b);
+	}
+	public void pushPila(double nuevo_dato) {
+		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
+		arriba = nuevo_nodo;
+	}
 	
+	public double popPila() {
+		double dato_arriba = arriba.dato;
+		arriba = arriba.abajo;
+		return dato_arriba;
+	}
 }
