@@ -26,12 +26,14 @@ package calculadora;
  *      	Luego comprobamos con JUnit que no hay ninguna variación en el resultado.
  *      
  *      	En la segunda refactorización he extraido metodos del metodo resultado para 
- *      simplificarlo y definir mejor las operaciones.
+ *      simplificarlo y definir mejor las operaciones, además he organizado los metodos 
+ *      para que se entienda mejor el código.
  *      
  *      	Lo vuelvo a comprobar con JUnit para verificar que no varian los resultados.
  *       	
  *       	En la tercera refactorización he creado la clase NodoPila fuera de la clase
- *       RPN, así se queda más limpio el código.
+ *       RPN, así se queda más limpio el código y he creado todos los comentarios para 
+ *       generar la documentación con Javadoc.
  *       
  *       	Lo he vuelto a probar con JUnit para verificar que sigue funcionando del mismo 
  *       modo el programa.
@@ -48,25 +50,9 @@ import calculadora.NodoPila;
 public class RPN {
 	private String commando;
 	private NodoPila arriba;
-	/**
-	 * Método <code>pushPila</code> crea un objeto del constructor <code>NodoPila</code> y almacena el double que le pasamos 
-	 * en la variable <code>dato</code>.
-	 * @param nuevo_dato, parámetro que pasamos para que lo almacene en dato por medio del objeto arriba.
-	 */
-	public void pushPila(double nuevo_dato) {
-		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
-		arriba = nuevo_nodo;
-	}
-	/**
-	 * Método <code>popPila</code> inicializa <code>dato_arriba</code> parámetro que almacena el valor de <code>dato</code> del objeto <code>arriba</code>
-	 * y a su vez almacena en <code>arriba</code> el objeto <code>abajo</code>.
-	 * @return retorna parámetro <code>dato_arriba</code>.
-	 */
-	public double popPila() {
-		double dato_arriba = arriba.dato;
-		arriba = arriba.abajo;
-		return dato_arriba;
-	}
+	private double a;
+	private double b;
+	
 	/**
 	 * Constructor que pone en nulo <code>arriba</code> y almacena el parámetro <code>commando</code>.
 	 * @param commando parámetro del constructor.
@@ -122,64 +108,70 @@ public class RPN {
 		return val;
 	}
 	/**
-	 * Método <code>modul</code> calcula el módulo
+	 * Método <code>sum</code> calcula la suma
 	 */
-	private void modul() {
-		double a;
-		double b;
+	private void sum() {
 		b = popPila();
 		a = popPila();
-		pushPila(a % b);
-	}
-	/**
-	 * Método <code>pow</code> calcula la potencia
-	 */
-	private void pow() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(Math.pow(a, b));
-	}
-	/**
-	 * Método <code>div</code> calcula la división
-	 */
-	private void div() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a / b);
-	}
-	/**
-	 * Método <code>mult</code> calcula la multiplicación
-	 */
-	private void mult() {
-		double a;
-		double b;
-		b = popPila();
-		a = popPila();
-		pushPila(a * b);
+		pushPila(a + b);
 	}
 	/**
 	 * Método <code>rest</code> calcula la resta
 	 */
 	private void rest() {
-		double a;
-		double b;
 		b = popPila();
 		a = popPila();
 		pushPila(a - b);
 	}
 	/**
-	 * Método <code>sum</code> calcula la suma
+	 * Método <code>mult</code> calcula la multiplicación
 	 */
-	private void sum() {
-		double a;
-		double b;
+	private void mult() {
 		b = popPila();
 		a = popPila();
-		pushPila(a + b);
+		pushPila(a * b);
 	}
-	
+	/**
+	 * Método <code>div</code> calcula la división
+	 */
+	private void div() {
+		b = popPila();
+		a = popPila();
+		pushPila(a / b);
+	}
+	/**
+	 * Método <code>pow</code> calcula la potencia
+	 */
+	private void pow() {
+		b = popPila();
+		a = popPila();
+		pushPila(Math.pow(a, b));
+	}
+	/**
+	 * Método <code>modul</code> calcula el módulo
+	 */
+	private void modul() {
+		b = popPila();
+		a = popPila();
+		pushPila(a % b);
+	}
+	/**
+	 * Método <code>popPila</code> inicializa <code>dato_arriba</code> parámetro que almacena el valor de <code>dato</code> del objeto <code>arriba</code>
+	 * y a su vez almacena en <code>arriba</code> el objeto <code>abajo</code>.
+	 * @return retorna parámetro <code>dato_arriba</code>.
+	 */
+	public double popPila() {
+		double dato_arriba = arriba.dato;
+		arriba = arriba.abajo;
+		return dato_arriba;
+	}
+	/**
+	 * Método <code>pushPila</code> crea un objeto del constructor <code>NodoPila</code> y almacena el double que le pasamos 
+	 * en la variable <code>dato</code>.
+	 * @param nuevo_dato, parámetro que pasamos para que lo almacene en dato por medio del objeto arriba.
+	 */
+	public void pushPila(double nuevo_dato) {
+		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
+		arriba = nuevo_nodo;
+	}
 }
