@@ -25,7 +25,7 @@ package calculadora;
  *      	Luego comprobamos con JUnit que no hay ninguna variación en el resultado.
  *      
  *      	En la segunda refactorización he extraido metodos del metodo resultado para 
- *      simplificarlo y definir mejor las operaciones, además he organizado mejor los metodos para 
+ *      simplificarlo y definir mejor las operaciones, además he organizado los metodos para 
  *      que se entienda mejor el codigo.
  *      
  *      	Lo vuelvo a comprobar con JUnit para verificar que no varian los resultados.
