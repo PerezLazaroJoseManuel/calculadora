@@ -1,9 +1,16 @@
 package calculadora;
 
 import java.util.Scanner;
-
+/**
+ * Clase con método main para ejecutar programa.
+ * @version 3.0 04/02/2018.
+ * @author jmpela.
+ *
+ */
 public class TestRPN {
-	/* metodo main */
+	/**
+	 *  metodo main 
+	 *  */
 	public static void main(String[] args) {
 		while(true) {
 			Scanner in = new Scanner(System.in);

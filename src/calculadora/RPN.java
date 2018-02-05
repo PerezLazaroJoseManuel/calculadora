@@ -16,9 +16,9 @@ package calculadora;
  *		se debe reorganizar este código usando al menos tres de las reglas 
  *		vistas en clase.
  */
-/**
+/*
  * 
- * @author jmpel
+ * 
  *
  *      	En esta primera refactorización lo que hacemos es reorganizar el código 
  *      poniendo los atributos primero y después los metodos.
@@ -39,27 +39,46 @@ package calculadora;
  */
 
 import calculadora.NodoPila;
-
+/**
+ * Clase para calcular operaciones (calculadora de notación inversa polaca).
+ * @version 3.0, 04/02/2018.
+ * @author jmpela.
+ *
+ */
 public class RPN {
 	private String commando;
 	private NodoPila arriba;
-	
+	/**
+	 * Método <code>pushPila</code> crea un objeto del constructor <code>NodoPila</code> y almacena el double que le pasamos 
+	 * en la variable <code>dato</code>.
+	 * @param nuevo_dato, parámetro que pasamos para que lo almacene en dato por medio del objeto arriba.
+	 */
 	public void pushPila(double nuevo_dato) {
 		NodoPila nuevo_nodo = new NodoPila(nuevo_dato, arriba);
 		arriba = nuevo_nodo;
 	}
-	
+	/**
+	 * Método <code>popPila</code> inicializa <code>dato_arriba</code> parámetro que almacena el valor de <code>dato</code> del objeto <code>arriba</code>
+	 * y a su vez almacena en <code>arriba</code> el objeto <code>abajo</code>.
+	 * @return retorna parámetro <code>dato_arriba</code>.
+	 */
 	public double popPila() {
 		double dato_arriba = arriba.dato;
 		arriba = arriba.abajo;
 		return dato_arriba;
 	}
-	
+	/**
+	 * Constructor que pone en nulo <code>arriba</code> y almacena el parámetro <code>commando</code>.
+	 * @param commando parámetro del constructor.
+	 */
 	public RPN(String commando) {
 		arriba = null;
 		this.commando = commando;
 	}
-	
+	/**
+	 * Método <code>resultado</code>para calcular las operaciones.
+	 * @return retorna resultados de las operaciones.
+	 */
 	public double resultado() {
 		int j;
 			
@@ -102,7 +121,9 @@ public class RPN {
 		
 		return val;
 	}
-
+	/**
+	 * Método <code>modul</code> calcula el módulo
+	 */
 	private void modul() {
 		double a;
 		double b;
@@ -110,7 +131,9 @@ public class RPN {
 		a = popPila();
 		pushPila(a % b);
 	}
-
+	/**
+	 * Método <code>pow</code> calcula la potencia
+	 */
 	private void pow() {
 		double a;
 		double b;
@@ -118,7 +141,9 @@ public class RPN {
 		a = popPila();
 		pushPila(Math.pow(a, b));
 	}
-
+	/**
+	 * Método <code>div</code> calcula la división
+	 */
 	private void div() {
 		double a;
 		double b;
@@ -126,7 +151,9 @@ public class RPN {
 		a = popPila();
 		pushPila(a / b);
 	}
-
+	/**
+	 * Método <code>mult</code> calcula la multiplicación
+	 */
 	private void mult() {
 		double a;
 		double b;
@@ -134,7 +161,9 @@ public class RPN {
 		a = popPila();
 		pushPila(a * b);
 	}
-
+	/**
+	 * Método <code>rest</code> calcula la resta
+	 */
 	private void rest() {
 		double a;
 		double b;
@@ -142,7 +171,9 @@ public class RPN {
 		a = popPila();
 		pushPila(a - b);
 	}
-
+	/**
+	 * Método <code>sum</code> calcula la suma
+	 */
 	private void sum() {
 		double a;
 		double b;

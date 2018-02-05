@@ -5,7 +5,12 @@ import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 
 import calculadora.RPN;
-
+/**
+ * Clase <code>TestRPN</code> para hacer pruebas unitarias JUnit.
+ * @version 1.0 04/02/2018.
+ * @author jmpela.
+ *
+ */
 public class TestRPN extends TestCase {
 	
 	@Test
