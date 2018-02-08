@@ -15,12 +15,9 @@ package calculadora;
  *
  *		se debe reorganizar este código usando al menos tres de las reglas 
  *		vistas en clase.
- */
-/**
- * 
- * @author jmpel
  *
- *      	En esta primera refactorización lo que hacemos es reorganizar el código 
+ *
+ *      	-En esta primera refactorización lo que hacemos es reorganizar el código 
  *      poniendo los atributos primero y después los metodos.
  *      
  *      	Luego comprobamos con JUnit que no hay ninguna variación en el resultado.
