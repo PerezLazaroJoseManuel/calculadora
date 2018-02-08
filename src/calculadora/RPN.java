@@ -17,7 +17,6 @@ package calculadora;
  *		vistas en clase.
  * 
  * 
- *
  *      	-En esta primera refactorización lo que hacemos es reorganizar el código 
  *      poniendo los atributos primero y después los metodos.
  *      
