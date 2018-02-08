@@ -15,23 +15,21 @@ package calculadora;
  *
  *		se debe reorganizar este código usando al menos tres de las reglas 
  *		vistas en clase.
- */
-/*
  * 
  * 
  *
- *      	En esta primera refactorización lo que hacemos es reorganizar el código 
+ *      	-En esta primera refactorización lo que hacemos es reorganizar el código 
  *      poniendo los atributos primero y después los metodos.
  *      
  *      	Luego comprobamos con JUnit que no hay ninguna variación en el resultado.
  *      
- *      	En la segunda refactorización he extraido metodos del metodo resultado para 
+ *      	-En la segunda refactorización he extraido metodos del metodo resultado para 
  *      simplificarlo y definir mejor las operaciones, además he organizado los metodos 
  *      para que se entienda mejor el código.
  *      
  *      	Lo vuelvo a comprobar con JUnit para verificar que no varian los resultados.
  *       	
- *       	En la tercera refactorización he creado la clase NodoPila fuera de la clase
+ *       	-En la tercera refactorización he creado la clase NodoPila fuera de la clase
  *       RPN, así se queda más limpio el código y he creado todos los comentarios para 
  *       generar la documentación con Javadoc.
  *       
